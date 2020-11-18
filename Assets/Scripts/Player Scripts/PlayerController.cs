@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private float current_Attack_Timer;
     private bool canAttack;
 
+    public Transform bulletSpawner;
+    public GameObject bulletPrefab;
+
     // Start is called before the first frame update
     void Start() {
         current_Attack_Timer = attack_Timer;
@@ -29,7 +32,8 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         Attack();
-         
+        PlayerShooting();
+
     }
 
     void MovePlayer(){
@@ -98,6 +102,18 @@ public class PlayerController : MonoBehaviour
 
             }
         } 
+    }
+
+    public void PlayerShooting()
+    {
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+
+            Instantiate(bulletPrefab, bulletSpawner.position, bulletSpawner.rotation);
+
+        }
+
     }
 
 }
